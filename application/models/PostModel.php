@@ -46,7 +46,7 @@ class PostModel extends CI_Model
         return $query->row();
     }
 
-    public function updateFile($id, $data)
+    public function updatePengajuan($id, $data)
     {
         $this->db->where('id', $id);
         return $this->db->update('post', $data);

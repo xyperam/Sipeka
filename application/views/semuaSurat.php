@@ -26,9 +26,6 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>auth/logout" class="nav-link">Logout</a>
-                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -74,9 +71,9 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/massage">
+                                <a href="<?= base_url(); ?>member/pengajuanServis">
                                     <i class="nav-icon far fa-envelope"></i>
-                                    Messages
+                                    Pengajuan Servis
                                 </a>
                             </h6>
                         </li>
@@ -85,7 +82,7 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/lihatSurat">
                                     <i class="nav-icon fas fa-eye"></i>
-                                    Surat Saya
+                                    Jadwal Servis
                                 </a>
                             </h6>
                         </li>

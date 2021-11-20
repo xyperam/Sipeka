@@ -28,10 +28,6 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>auth/logout" class="nav-link">Logout</a>
-                </li>
-            </ul>
         </nav>
         <!-- /.navbar -->
 
@@ -76,9 +72,9 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/massage">
+                                <a href="<?= base_url(); ?>member/pengajuanServis">
                                     <i class="nav-icon far fa-envelope"></i>
-                                    Messages
+                                    Pengajuan Servis
                                 </a>
                             </h6>
                         </li>
@@ -134,7 +130,7 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">PAGE MASSAGES</h2>
+                    <h2 class="display-4">Pengajuan Servis Kendaraan</h2>
                 </div>
             </div>
 
@@ -147,33 +143,41 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form class="form" enctype="multipart/form-data" role="form" method="post" action="<?= base_url('Member/create_letter'); ?>">
+                        <form class="form" enctype="multipart/form-data" role="form" method="post" action="<?= base_url('Member/create_pengajuan'); ?>">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nomor Polisi</label>
-                                    <input type="date" name="no_polisi" class="form-control" placeholder="Nomor Polisi">
+                                    <input type="text" name="no_polisi" class="form-control" placeholder="Nomor Polisi">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">No Surat</label>
-                                    <input type="text" name="no_surat" class="form-control" placeholder="No Surat">
+                                    <label for="exampleInputPassword1">Jenis Kendaraan</label>
+                                    <input type="text" name="jenis_kendaran" class="form-control" placeholder="Jenis Kendaraan">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control" placeholder="Alamat">
+                                    <label for="exampleInputPassword1">Tipe</label>
+                                    <input type="text" name="tipe" class="form-control" placeholder="Tipe">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Kelurahan</label>
-                                    <input type="text" name="kelurahan" class="form-control" placeholder="Alamat">
+                                    <label for="exampleInputPassword1">Nomor Rangka</label>
+                                    <input type="text" name="no_rangka" class="form-control" placeholder="no_rangka">
                                 </div>
 
-                                <p>Foto Kejadian</p>
-                                <div class="custom-file">
-                                    <input type="file" name="image" class="custom-file-input" required>
-                                    <label class="custom-file-label" for="customFile">Document</label>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Operator</label>
+                                    <input type="text" name="operator" class="form-control" placeholder="operator">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea2">Keterangan</label>
+                                    <textarea class="form-control rounded-0" name="keterangan" rows="3" placeholder="Masukan Keterangan Kondisi Kendaraan"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="status_pengajuan" value="Proses Pengajuan">
+                                </div>
+
 
                             </div>
                             <!-- /.card-body -->

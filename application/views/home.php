@@ -80,9 +80,9 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/massage">
+                                <a href="<?= base_url(); ?>member/pengajuanServis">
                                     <i class="nav-icon far fa-envelope"></i>
-                                    Messages
+                                    Pengajuan Servis
                                 </a>
                             </h6>
                         </li>

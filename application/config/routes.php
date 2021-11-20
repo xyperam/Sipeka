@@ -61,7 +61,7 @@ $route['admin'] = 'admin/index';
 
 // USER
 $route['home'] = 'member/index';
-$route['massage'] = 'member/massage';
+$route['pengajuanServis'] = 'member/pengajuanServis';
 $route['lihatSurat'] = 'Member/lihatSurat';
 // PAGES END
 

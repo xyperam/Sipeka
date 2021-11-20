@@ -29,12 +29,12 @@ class Member extends CI_Controller
     }
 
     // Page Massage
-    public function massage()
+    public function pengajuanServis()
     {
         $data = [
             "user" => $this->user,
         ];
-        $this->load->view('massage', $data);
+        $this->load->view('pengajuanServis', $data);
     }
 
     public function lihatSurat()
@@ -106,53 +106,39 @@ class Member extends CI_Controller
 
 
     // INSERT
-    public function create_letter()
+    public function create_pengajuan()
     {
         $id = $this->input->post("id");
-        $tgl_surat = $this->input->post("tgl_surat");
-        $no_surat = $this->input->post("no_surat");
-        $alamat = $this->input->post("alamat");
-        $kelurahan = $this->input->post("kelurahan");
-        // $keterangan = $this->input->post("keterangan");
-        $image = $this->upload_foto();
-        // $status = $this->input->post("status");
+        $no_polisi = $this->input->post("no_polisi");
+        $jenis_kendaraan = $this->input->post("jenis_kendaran");
+        $tipe = $this->input->post("tipe");
+        $no_rangka = $this->input->post("no_rangka");
+        $operator = $this->input->post("operator");
+        $keterangan = $this->input->post("keterangan");
+        $status_pengajuan = $this->input->post("status_pengajuan");
         $created_at = date("Y-m-d H:i:s");
 
         $data = [
             "id" => $id,
             "user_id" => $this->user->id,
-            "tgl_surat" => $tgl_surat,
-            "no_surat" => $no_surat,
-            "alamat" => $alamat,
-            "kelurahan" => $kelurahan,
-            "image" => $image,
+            "no_polisi" => $no_polisi,
+            "jenis_kendaraan" => $jenis_kendaraan,
+            "tipe" => $tipe,
+            "no_rangka" => $no_rangka,
+            "operator" => $operator,
+            "keterangan" => $keterangan,
+            "status_pengajuan" => $status_pengajuan,
             "created_at" => $created_at
         ];
 
         // LOGIC INSERT DATA
         if ($this->PostModel->create($data) != 1) {
-            redirect(base_url("massage"));
+            redirect(base_url("pengajuanServis"));
         }
-        redirect(base_url("massage"));
+        redirect(base_url("pengajuanServis"));
     }
 
-    //upload image postingan
-    public function upload_foto()
-    {
-        $config['upload_path']          = './image/';
-        $config['allowed_types']        = 'png|jpg|jpeg';
-        $config['overwrite']            = true;
-        $config['max_size']             = 102400;
 
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('image')) {
-            redirect(base_url("massage"));
-        } else {
-            return $this->upload->data("file_name");
-        }
-    }
-    // INSERT END
 
     public function deletePost($id)
     {
@@ -167,48 +153,29 @@ class Member extends CI_Controller
         }
     }
 
-    public function editSurat()
+    public function editPengajuan()
     {
         $id = $this->input->post('id');
 
         $data = $this->PostModel->getDataById($id)->row();
-        $image = './image/' . $data->image;
+        $data = array(
+            "id" => $this->input->post('id'),
+            "no_polisi" => $this->input->post('no_polisi'),
+            "jenis_kendaraan" => $this->input->post('jenis_kendaraan'),
+            "tipe" => $this->input->post('tipe'),
+            "no_rangka" => $this->input->post('no_rangka'),
+            "operator" => $this->input->post('operator'),
+            "keterangan" => $this->input->post('keterangan'),
+            "status_pengajuan" => $this->input->post('status_pengajuan'),
 
-        if (is_readable($image) && unlink($image)) {
+        );
 
-            $config['upload_path']          = './image/';
-            $config['allowed_types']        = 'png|jpg|jpeg';
-            $config['overwrite']            = true;
-            $config['max_size']             = 102400;
+        $update = $this->PostModel->updatePengajuan($id, $data);
 
-            $this->load->library('upload', $config);
-
-            if (!$this->upload->do_upload('image')) {
-                redirect(base_url("Admin/lihatSurat"));
-            } else {
-                // return $this->upload->data("file_name");
-
-                $upload_data = $this->upload->data();
-                $image = $upload_data['file_name'];
-
-                $data = array(
-                    "id" => $this->input->post('id'),
-                    "no_surat" => $this->input->post('no_surat'),
-                    "alamat" => $this->input->post('alamat'),
-                    "kelurahan" => $this->input->post('kelurahan'),
-                    "keterangan" => $this->input->post('keterangan'),
-                    "image" => $image,
-                    "status" => $this->input->post('status'),
-                );
-
-                $update = $this->PostModel->updateFile($id, $data);
-
-                if ($update) {
-                    redirect(base_url("Member/lihatSurat"));
-                } else {
-                    redirect(base_url("Member/lihatSurat"));
-                }
-            }
+        if ($update) {
+            redirect(base_url("Member/lihatSurat"));
+        } else {
+            redirect(base_url("Member/lihatSurat"));
         }
     }
 }
