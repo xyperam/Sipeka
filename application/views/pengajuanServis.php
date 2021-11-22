@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistem Aduan Penaggulangan Bencana</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -152,7 +155,7 @@
 
                                 <div class="form-group">
                                     <label for="jenis_kendaraan">Jenis Kendaraan</label>
-                                    <input type="text" name="jenis_kendaran" id="jenis_kendaran" class="form-control" placeholder="Jenis Kendaraan">
+                                    <input type="text" name="jenis_kendaraan" id="jenis_kendaraan" class="form-control" placeholder="Jenis Kendaraan">
                                 </div>
 
                                 <div class="form-group">
@@ -216,8 +219,26 @@
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#no_polisi").autocomplete({
+                source: "<?php echo site_url('Member/get_autocomplete/?'); ?>",
+                select: function(event, ui) {
+                    $('[name ="no_polisi" ]').val(ui.item.label);
+                    $('[name ="jenis_kendaraan" ]').val(ui.item.jenis_kendaraan);
+                    $('[name ="tipe" ]').val(ui.item.tipe);
+                    $('[name ="no_rangka" ]').val(ui.item.no_rangka);
+                    $('[name ="operator" ]').val(ui.item.operator);
+
+                }
+            });
+        });
+    </script>
 
 
-    < /body>
+</body>
 
-        < /html>
+</html>

@@ -178,5 +178,42 @@ class Member extends CI_Controller
         }
     }
     //autocomplete
+    // function get_autocomplete()
+    // {
+    //     if (isset($_GET['term'])) {
+    //         $result = $this->DataKendaraanModel->search_nopol($_GET['term']);
+    //         if (count($result) > 0) {
+    //             foreach ($result as $row)
+    //             $arr_result[] = $array(
+    //                 'label'=>$row->no_polisi,
+    //             )
+    //                 // $arr_result[] = $array(
+    //                 //     'label'=>$row->no_polisi,
+    //                 //     'jenis_kendaraan' =>$row->jenis_kendaraan,
+    //                 //     'tipe' =>$row->tipe,
+    //                 //     'no_rangka' =>$row->no_rangka,
+    //                 //     'operator' =>$row->operator
 
+    //                 // )
+    //             echo json_encode($arr_result);
+    //         }
+    //     }
+    // }
+    function get_autocomplete()
+    {
+        if (isset($_GET['term'])) {
+            $result = $this->DataKendaraanModel->search_nopol($_GET['term']);
+            if (count($result) > 0) {
+                foreach ($result as $row)
+                    $arr_result[] = array(
+                        'label'         => $row->no_polisi,
+                        'jenis_kendaraan'   => $row->jenis_kendaraan,
+                        'tipe' => $row->tipe,
+                        'no_rangka' => $row->no_rangka,
+                        'operator' => $row->operator
+                    );
+                echo json_encode($arr_result);
+            }
+        }
+    }
 }
