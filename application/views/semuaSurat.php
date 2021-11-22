@@ -35,7 +35,7 @@
             <!-- Brand Logo -->
             <a href="<?= base_url(); ?>Admin/about" class="brand-link">
                 <img src="<?= base_url('assets/dist/img/pupr.png') ?>" alt="PUPR Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <h3>SAPA</h3>
+                <h3>SIPEKA</h3>
             </a>
 
             <!-- Sidebar -->

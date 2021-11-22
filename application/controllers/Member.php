@@ -11,6 +11,7 @@ class Member extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->model("UserModel");
         $this->load->model("PostModel");
+        $this->load->model("DataKendaraanModel");
 
         if ($this->session->userdata("login") == null) {
             redirect(base_url('login'));
@@ -37,14 +38,14 @@ class Member extends CI_Controller
         $this->load->view('pengajuanServis', $data);
     }
 
-    public function lihatSurat()
+    public function jadwalServis()
     {
         $data = [
             "user" => $this->user,
             "letter" => $this->PostModel->getAllByUser($this->user->id)
         ];
 
-        $this->load->view('lihatSurat', $data);
+        $this->load->view('jadwalServis', $data);
     }
 
     public function semuaSurat()
@@ -140,16 +141,14 @@ class Member extends CI_Controller
 
 
 
-    public function deletePost($id)
+    public function deletePengajuan($id)
     {
         $data = $this->PostModel->getDataById($id)->row();
-        $image = './image/' . $data->image;
-
-        if (is_readable($image) && unlink($image)) {
-            $delete = $this->PostModel->delete($id);
-            redirect(base_url("lihatSurat"));
+        $delete = $this->PostModel->delete($id);
+        if ($delete) {
+            redirect(base_url("Member/jadwalServis"));
         } else {
-            redirect(base_url("lihatSurat"));
+            redirect(base_url("Member/jadwalServis"));
         }
     }
 
@@ -173,9 +172,11 @@ class Member extends CI_Controller
         $update = $this->PostModel->updatePengajuan($id, $data);
 
         if ($update) {
-            redirect(base_url("Member/lihatSurat"));
+            redirect(base_url("Member/jadwalServis"));
         } else {
-            redirect(base_url("Member/lihatSurat"));
+            redirect(base_url("Member/jadwalServis"));
         }
     }
+    //autocomplete
+
 }

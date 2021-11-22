@@ -36,7 +36,7 @@
             <!-- Brand Logo -->
             <a href="<?= base_url(); ?>Admin/about" class="brand-link">
                 <img src="<?= base_url('assets/dist/img/pupr.png') ?>" alt="PUPR Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <h3>SAPA</h3>
+                <h3>SIPEKA</h3>
             </a>
 
             <!-- Sidebar -->
@@ -81,9 +81,9 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/lihatSurat">
+                                <a href="<?= base_url(); ?>member/jadwalServis">
                                     <i class="nav-icon fas fa-eye"></i>
-                                    Surat Saya
+                                    Jadwal Servis
                                 </a>
                             </h6>
                         </li>
@@ -139,39 +139,39 @@
                 <div class="col-md-10 m-auto">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Kirim Surat Pengaduan</h3>
+                            <h3 class="card-title">Kirim Pengajuan Servis</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form class="form" enctype="multipart/form-data" role="form" method="post" action="<?= base_url('Member/create_pengajuan'); ?>">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Nomor Polisi</label>
-                                    <input type="text" name="no_polisi" class="form-control" placeholder="Nomor Polisi">
+                                    <label for="no_polisi">Nomor Polisi</label>
+                                    <input type="text" name="no_polisi" id="no_polisi" class=" form-control" placeholder="Nomor Polisi">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Jenis Kendaraan</label>
-                                    <input type="text" name="jenis_kendaran" class="form-control" placeholder="Jenis Kendaraan">
+                                    <label for="jenis_kendaraan">Jenis Kendaraan</label>
+                                    <input type="text" name="jenis_kendaran" id="jenis_kendaran" class="form-control" placeholder="Jenis Kendaraan">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Tipe</label>
-                                    <input type="text" name="tipe" class="form-control" placeholder="Tipe">
+                                    <label for="tipe">Tipe</label>
+                                    <input type="text" name="tipe" id="tipe" class="form-control" placeholder="Tipe">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Nomor Rangka</label>
-                                    <input type="text" name="no_rangka" class="form-control" placeholder="no_rangka">
+                                    <label for="no_rangka">Nomor Rangka</label>
+                                    <input type="text" name="no_rangka" id="no_rangka" class="form-control" placeholder="Nomor Rangka">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Operator</label>
-                                    <input type="text" name="operator" class="form-control" placeholder="operator">
+                                    <label for="operator">Operator</label>
+                                    <input type="text" name="operator" id="operator" class="form-control" placeholder="operator">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea2">Keterangan</label>
+                                    <label for="keterangan">Keterangan</label>
                                     <textarea class="form-control rounded-0" name="keterangan" rows="3" placeholder="Masukan Keterangan Kondisi Kendaraan"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -215,6 +215,9 @@
     <script src="<?= base_url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
-</body>
 
-</html>
+
+
+    < /body>
+
+        < /html>

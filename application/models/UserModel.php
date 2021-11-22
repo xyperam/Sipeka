@@ -35,4 +35,5 @@ class UserModel extends CI_Model
     }
 
     // USER ACCOUNT PAGE END
+
 }

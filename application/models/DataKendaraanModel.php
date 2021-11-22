@@ -51,4 +51,24 @@ class DataKendaraanModel extends CI_Model
     {
         return $this->db->delete($this->table, array('id' => $id));
     }
+
+    function get_no_polisi($postData)
+    {
+
+        $response = array();
+
+        if (isset($postData['search'])) {
+            // Select record
+            $this->db->select('*');
+            $this->db->where("no_polisi like '%" . $postData['search'] . "%' ");
+
+            $records = $this->db->get('data_kendaraan')->result();
+
+            foreach ($records as $row) {
+                $response[] = array("value" => $row->id, "label" => $row->username);
+            }
+        }
+
+        return $response;
+    }
 }

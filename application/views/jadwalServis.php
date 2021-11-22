@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem Aduan Penaggulangan Bencana</title>
+    <title>Sistem Pemeliharaan Kendaraan</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -35,7 +35,7 @@
             <!-- Brand Logo -->
             <a href="<?= base_url(); ?>Admin/about" class="brand-link">
                 <img src="<?= base_url('assets/dist/img/pupr.png') ?>" alt="PUPR Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <h3>SAPA</h3>
+                <h3>SIPEKA</h3>
             </a>
 
             <!-- Sidebar -->
@@ -80,9 +80,9 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/lihatSurat">
+                                <a href="<?= base_url(); ?>member/jadwalServis">
                                     <i class="nav-icon fas fa-eye"></i>
-                                    Surat Saya
+                                    Jadwal Servis
                                 </a>
                             </h6>
                         </li>
@@ -233,7 +233,7 @@
                                         <td>
                                             <div class="wrapper-button">
                                                 <!-- DELETE -->
-                                                <a class="btn btn-danger btn-sm" href="deletePost/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                <a class="btn btn-danger btn-sm" href="deletePengajuan/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                 <!-- EDIT -->
 
                                                 <span><a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
@@ -302,7 +302,7 @@
                     "searching": false,
                     "ordering": true,
                     "info": true,
-                    "autoWidth": false,
+                    "autoWidth": true,
                     "responsive": true,
                 });
             });

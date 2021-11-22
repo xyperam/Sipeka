@@ -40,7 +40,7 @@
             <!-- Brand Logo -->
             <a href="<?= base_url(); ?>Admin/about" class="brand-link">
                 <img src="<?= base_url('assets/dist/img/pupr.png') ?>" alt="PUPR Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <h3>SAPA</h3>
+                <h3>SIPEKA</h3>
             </a>
 
             <!-- Sidebar -->
@@ -89,13 +89,13 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">ABOUT <b>SAPA</b></h2>
+                    <h2 class="display-4">ABOUT <b>SIPEKA</b></h2>
                 </div>
 
                 <h2 style="text-align: center;">Sistem Aduan Penaggulangan Bencana</h2>
 
                 <div class="container my-5">
-                    <p style="text-align: justify;"> <b>SAPA ( Sistem Aduan Penaggulangan Bencan )</b> dibangun untuk mempermudah membuat laporan surat aduan tanah longsor dari BPBD Kota Bogor yang akan di terima oleh Dinas PUPR Kota Bogor, Dinas PUPR akan melakukan survei ke lokasi terdampak bencana agar bisa melihat seberapa parah dampak dari bencana tanah longsor tersebut lalu Dinas PUPR akan mengkaji dan memutuskan pembangunan ulang bangunan yang terdampak bencana tanah longsor dan Dinas PUPR akan memberi level dan mengirim report status pada lokasi terdampak jika sudah Selesai Survei, Sedang Dalam Pembangunan, atau Selesai Pembangunan.</p>
+                    <p style="text-align: justify;"> <b>SIPEKA ( Sistem Aduan Penaggulangan Bencan )</b> dibangun untuk mempermudah membuat laporan surat aduan tanah longsor dari BPBD Kota Bogor yang akan di terima oleh Dinas PUPR Kota Bogor, Dinas PUPR akan melakukan survei ke lokasi terdampak bencana agar bisa melihat seberapa parah dampak dari bencana tanah longsor tersebut lalu Dinas PUPR akan mengkaji dan memutuskan pembangunan ulang bangunan yang terdampak bencana tanah longsor dan Dinas PUPR akan memberi level dan mengirim report status pada lokasi terdampak jika sudah Selesai Survei, Sedang Dalam Pembangunan, atau Selesai Pembangunan.</p>
 
                     <p> Semua data yang di dapat akan di jadikan report laporan bulanan oleh sub bidang Sumber Daya Alam, baik berupa pdf maupun excel.</p>
                 </div>

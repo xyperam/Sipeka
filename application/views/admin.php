@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SAPA / Admin</title>
+    <title>SIPEKA / Admin</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,16 +71,6 @@
                                 </a>
                             </h6>
                         </li>
-
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>auth/registrasi">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    Buat Akun
-                                </a>
-                            </h6>
-                        </li>
-
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>Admin/datakendaraan">
@@ -93,8 +83,17 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>Admin/suratMasuk">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    Surat Masuk BPBD
+                                    <i class="nav-icon far fa-calendar-check"></i>
+                                    Konfirmasi Servis
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>Admin/suratMasuk">
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    Jadwal Servis
                                 </a>
                             </h6>
                         </li>

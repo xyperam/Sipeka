@@ -51,4 +51,6 @@ class PostModel extends CI_Model
         $this->db->where('id', $id);
         return $this->db->update('post', $data);
     }
+    //tes search
+
 }

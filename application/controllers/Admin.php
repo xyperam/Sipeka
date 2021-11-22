@@ -124,45 +124,21 @@ class Admin extends CI_Controller
         $id = $this->input->post('id');
 
         $data = $this->PostModel->getDataById($id)->row();
-        $image = './image/' . $data->image;
 
-        if (is_readable($image) && unlink($image)) {
+        $data = array(
+            "id" => $this->input->post('id'),
+            "status_pengajuan" => $this->input->post('status_pengajuan'),
+            "tgl_servis" => $this->input->post('tgl_servis'),
+        );
 
-            $config['upload_path']          = './image/';
-            $config['allowed_types']        = 'png|jpg|jpeg';
-            $config['overwrite']            = true;
-            $config['max_size']             = 102400;
+        $update = $this->PostModel->updatePengajuan($id, $data);
 
-            $this->load->library('upload', $config);
-
-            if (!$this->upload->do_upload('image')) {
-                redirect(base_url("Admin/suratMasuk"));
-            } else {
-                // return $this->upload->data("file_name");
-
-                $upload_data = $this->upload->data();
-                $image = $upload_data['file_name'];
-
-                $data = array(
-                    "id" => $this->input->post('id'),
-                    "no_surat" => $this->input->post('no_surat'),
-                    "alamat" => $this->input->post('alamat'),
-                    "kelurahan" => $this->input->post('kelurahan'),
-                    "keterangan" => $this->input->post('keterangan'),
-                    "image" => $image,
-                    "status" => $this->input->post('status'),
-                );
-
-                $update = $this->PostModel->updateFile($id, $data);
-
-                if ($update) {
-                    redirect(base_url("Admin/suratMasuk"));
-                } else {
-                    redirect(base_url("Admin/suratMasuk"));
-                }
-            }
+        if ($update) {
+            redirect(base_url("Admin/suratMasuk"));
+        } else {
+            redirect(base_url("Admin/suratMasuk"));
         }
-    }
+    } //end function
 
 
 

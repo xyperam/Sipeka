@@ -38,7 +38,7 @@
             <!-- Brand Logo -->
             <a href="<?= base_url(); ?>Admin/about" class="brand-link">
                 <img src="<?= base_url('assets/dist/img/pupr.png') ?>" alt="PUPR Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <h3>SAPA</h3>
+                <h3>SIPEKA</h3>
             </a>
 
             <!-- Sidebar -->
@@ -72,19 +72,12 @@
                             </h6>
                         </li>
 
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>auth/registrasi">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    Buat Akun
-                                </a>
-                            </h6>
-                        </li>
+
 
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>Admin/datakendaraan">
-                                    <i class="nav-icon far fa-envelope"></i>
+                                    <i class="nav-icon fas fa-clipboard-list"></i>
                                     Data Kendaraan
                                 </a>
                             </h6>
@@ -93,8 +86,16 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>Admin/suratMasuk">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    Pengajuan Servis
+                                    <i class="nav-icon far fa-calendar-check"></i>
+                                    Konfirmasi Servis
+                                </a>
+                            </h6>
+                        </li>
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>Admin/suratMasuk">
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    Jadwal Servis
                                 </a>
                             </h6>
                         </li>
@@ -145,7 +146,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Edit Surat Aduan</h4>
+                                            <h4 class="modal-title">Konfirmasi Pengajuan Servis</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -156,45 +157,47 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="form-group">
-                                                        <label for="">Tanggal Surat</label>
+                                                        <label for="">Tanggal Pengajuan</label>
                                                         <input value="<?= $letters->id; ?>" type="hidden" name="id">
-                                                        <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date">
+                                                        <input class="form-control" id="created_at" name="created_at" value="<?= $letters->created_at; ?>" type="text" readonly>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="">No Surat</label>
-                                                        <input class="form-control" id="no_surat" name="no_surat" value="<?= $letters->no_surat; ?>" type="text">
+                                                        <label for="">Nomor Polisi</label>
+                                                        <input class="form-control" id="no_polisi" name="no_polisi" value="<?= $letters->no_polisi; ?>" type="text" readonly>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="">Alamat</label>
-                                                        <input class="form-control" id="alamat" name="alamat" value="<?= $letters->alamat; ?>" type="text">
+                                                        <label for="">Jenis Kendaraan</label>
+                                                        <input class="form-control" id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $letters->jenis_kendaraan; ?>" type="text" readonly>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="">Tipe</label>
+                                                        <input class="form-control" id="tipe" name="tipe" value="<?= $letters->tipe; ?>" type="text" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Nomor Rangka</label>
+                                                        <input class="form-control" id="no_rangka" name="no_rangka" value="<?= $letters->no_rangka; ?>" type="text" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Operator</label>
+                                                        <input class="form-control" id="operator" name="operator" value="<?= $letters->operator; ?>" type="text" readonly>
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="">Konfrimasi Pengajuan</label>
+                                                        <select class="form-control" id="status_pengajuan" name="status_pengajuan">
+                                                            <option value="Diterima">Diterima</option>
+                                                            <option value="Ditolak">Ditolak</option>
+
+                                                        </select>
+                                                    </div>
+
 
                                                     <div class="form-group">
-                                                        <label for="">Kelurahan</label>
-                                                        <input class="form-control" id="kelurahan" name="kelurahan" value="<?= $letters->kelurahan; ?>" type="text">
+                                                        <label for="">Tanggal Servis</label>
+                                                        <input class="form-control" id="tgl_servis" name="tgl_servis" value="<?= $letters->tgl_servis; ?>" type="date">
                                                     </div>
-
-                                                    <div class="form-group">
-                                                        <label for="">Keterangan</label>
-                                                        <input class="form-control" id="keterangan" name="keterangan" value="<?= $letters->keterangan; ?>" type="text">
-                                                    </div>
-
-                                                    <h5>Foto</h5>
-
-                                                    <img src="<?= base_url('image/' . $letters->image) ?>" height="150px" width="300px" alt="image">
-
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="customFile" name="image" required>
-                                                        <label class="custom-file-label" for="customFile">Pilih gambar</label>
-                                                    </div>
-
-                                                    <div class="form-group py-4">
-                                                        <label for="">Status</label>
-                                                        <input class="form-control" id="status" name="status" value="<?= $letters->status; ?>" type="text">
-                                                    </div>
-
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -224,14 +227,15 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Tgl Surat</th>
-                                        <th scope="col">No Surat</th>
-                                        <th scope="col">Alamat</th>
-                                        <th scope="col">Kelurahan</th>
+                                        <th scope="col">Tanggal Pengajuan</th>
+                                        <th scope="col">Nomor Polisi</th>
+                                        <th scope="col">Jenis Kendaraan</th>
+                                        <th scope="col">Tipe</th>
+                                        <th scope="col">Nomor Rangka</th>
+                                        <th scope="col">Operator</th>
                                         <th scope="col">Keterangan</th>
-                                        <th scope="col">Foto</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Author</th>
+                                        <th scope="col">Status Pengajuan</th>
+                                        <th scope="col">Tanggal Servis</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -241,25 +245,22 @@
                                     foreach ($letter as $letters) : ?>
                                         <tr class="table-warning">
                                             <th scope="row"><?= $i++; ?></th>
-                                            <td><?= $letters->tgl_surat; ?></td>
-                                            <td><?= $letters->no_surat; ?></td>
-                                            <td><?= $letters->alamat; ?></td>
-                                            <td><?= $letters->kelurahan; ?></td>
+                                            <td><?= $letters->created_at; ?></td>
+                                            <td><?= $letters->no_polisi; ?></td>
+                                            <td><?= $letters->jenis_kendaraan; ?></td>
+                                            <td><?= $letters->tipe; ?></td>
+                                            <td><?= $letters->no_rangka; ?></td>
+                                            <td><?= $letters->operator; ?></td>
                                             <td><?= $letters->keterangan; ?></td>
-                                            <td><?= $letters->image; ?></td>
-                                            <td><?= $letters->status; ?></td>
-                                            <td><?= $letters->username; ?></td>
+                                            <td><?= $letters->status_pengajuan; ?></td>
+                                            <td><?= $letters->tgl_servis; ?></td>
                                             <td>
                                                 <div class="wrapper-button">
                                                     <!-- DELETE -->
-                                                    <a class="btn btn-danger btn-sm" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                    <!-- <a class="btn btn-danger btn-sm" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a> -->
                                                     <!-- EDIT -->
                                                     <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                         <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <!-- DOWNLOAD -->
-                                                    <a class="btn btn-info btn-sm" href="<?= base_url("/image/$letters->image") ?>" download>
-                                                        <i class="fas fa-file-download"></i>
                                                     </a>
                                                 </div>
                                             </td>

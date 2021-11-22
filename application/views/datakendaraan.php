@@ -38,7 +38,7 @@
             <!-- Brand Logo -->
             <a href="<?= base_url(); ?>Admin/about" class="brand-link">
                 <img src="<?= base_url('assets/dist/img/pupr.png') ?>" alt="PUPR Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <h3>SAPA</h3>
+                <h3>SIPEKA</h3>
             </a>
 
             <!-- Sidebar -->
@@ -72,14 +72,6 @@
                             </h6>
                         </li>
 
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>auth/registrasi">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    Buat Akun
-                                </a>
-                            </h6>
-                        </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
@@ -93,8 +85,17 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>Admin/suratMasuk">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    Pengajuan Servis
+                                    <i class="nav-icon far fa-calendar-check"></i>
+                                    Konfirmasi Servis
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>Admin/suratMasuk">
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    Jadwal Servis
                                 </a>
                             </h6>
                         </li>
@@ -325,7 +326,6 @@
                                                     <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $kendaraann->id; ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-
                                                 </div>
                                             </td>
                                         </tr>
