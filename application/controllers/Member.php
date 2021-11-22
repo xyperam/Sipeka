@@ -111,7 +111,7 @@ class Member extends CI_Controller
     {
         $id = $this->input->post("id");
         $no_polisi = $this->input->post("no_polisi");
-        $jenis_kendaraan = $this->input->post("jenis_kendaran");
+        $jenis_kendaraan = $this->input->post("jenis_kendaraan");
         $tipe = $this->input->post("tipe");
         $no_rangka = $this->input->post("no_rangka");
         $operator = $this->input->post("operator");
@@ -207,7 +207,7 @@ class Member extends CI_Controller
                 foreach ($result as $row)
                     $arr_result[] = array(
                         'label'         => $row->no_polisi,
-                        'jenis_kendaraan'   => $row->jenis_kendaraan,
+                        'jenis_kendaraan'         => $row->jenis_kendaraan,
                         'tipe' => $row->tipe,
                         'no_rangka' => $row->no_rangka,
                         'operator' => $row->operator
