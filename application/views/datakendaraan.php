@@ -310,7 +310,7 @@
                                     <?php
                                     $i = 1;
                                     foreach ($kendaraan as $kendaraann) : ?>
-                                        <tr class="table-warning">
+                                        <tr class="table-light">
                                             <th scope="row"><?= $i++; ?></th>
                                             <td><?= $kendaraann->no_polisi; ?></td>
                                             <td><?= $kendaraann->jenis_kendaraan; ?></td>

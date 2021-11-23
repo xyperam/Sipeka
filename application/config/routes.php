@@ -58,6 +58,7 @@ $route['logout'] = 'auth/logout';
 // PAGES
 // ADMIN
 $route['admin'] = 'admin/index';
+$route['semuaSurat'] = 'admin/semuaSurat';
 
 // USER
 $route['home'] = 'member/index';

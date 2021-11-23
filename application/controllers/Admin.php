@@ -54,8 +54,18 @@ class Admin extends CI_Controller
         ];
         $this->load->view('about', $data);
     }
-    // PAGES END
 
+
+    // PAGES END
+    public function semuaSurat()
+    {
+        $data = [
+            "user" => $this->user,
+            "letter" => $this->PostModel->getAll()
+        ];
+
+        $this->load->view('semuaSurat', $data);
+    }
 
 
     // CRUD PAGES USER ACCOUNT
@@ -109,14 +119,8 @@ class Admin extends CI_Controller
     public function delete_post($id)
     {
         $data = $this->PostModel->getDataById($id)->row();
-        $image = './image/' . $data->image;
-
-        if (is_readable($image) && unlink($image)) {
-            $delete = $this->PostModel->delete($id);
-            redirect(base_url("Admin/suratMasuk"));
-        } else {
-            redirect(base_url("Admin/suratMasuk"));
-        }
+        $delete = $this->PostModel->delete($id);
+        redirect(base_url("Admin/suratMasuk"));
     }
 
     public function updateSurat()

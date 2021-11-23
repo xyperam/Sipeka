@@ -219,7 +219,7 @@
                                 <?php
                                 $i = 1;
                                 foreach ($letter as $letters) : ?>
-                                    <tr class="table-warning">
+                                    <tr class="table-light">
                                         <th scope="row"><?= $i++; ?></th>
                                         <td><?= $letters->created_at; ?></td>
                                         <td><?= $letters->no_polisi; ?></td>
@@ -228,17 +228,27 @@
                                         <td><?= $letters->no_rangka; ?></td>
                                         <td><?= $letters->operator; ?></td>
                                         <td><?= $letters->keterangan; ?></td>
-                                        <td><?= $letters->status_pengajuan; ?></td>
+                                        <td>
+                                            <?php
+                                            if ($letters->status_pengajuan == "Diterima") {
+                                                echo '<span class="badge badge-success">Diterima</span>';
+                                            } elseif ($letters->status_pengajuan == "Ditolak") {
+                                                echo '<span class="badge badge-danger">Ditolak</span>';
+                                            } else {
+                                                echo '<span class="badge badge-info">Dalam Proses Pengajuan</span>';
+                                            }
+                                            ?>
+                                        </td>
+
+
                                         <td><?= $letters->tgl_servis; ?></td>
                                         <td>
                                             <div class="wrapper-button">
+
                                                 <!-- DELETE -->
                                                 <a class="btn btn-danger btn-sm" href="deletePengajuan/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                 <!-- EDIT -->
-
-                                                <span><a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
+                                                <span><a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>"><i class="fas fa-edit"></i></a>
 
                                             </div>
                                         </td>
@@ -293,8 +303,10 @@
                 $("#example1").DataTable({
                     "responsive": true,
                     "lengthChange": false,
-                    "autoWidth": false,
+                    "autoWidth": true,
                     "buttons": ["csv", "excel", "pdf", "print"]
+
+
                 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                 $('#example2').DataTable({
                     "paging": true,
@@ -302,9 +314,11 @@
                     "searching": false,
                     "ordering": true,
                     "info": true,
-                    "autoWidth": true,
+                    "autoWidth": false,
                     "responsive": true,
                 });
+
+
             });
         </script>
 

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
 </head>
@@ -70,7 +71,7 @@
                                     User Account
                                 </a>
                             </h6>
-                        </li>
+                        </li>s
 
 
 
@@ -93,7 +94,7 @@
                         </li>
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/suratMasuk">
+                                <a href="<?= base_url(); ?>Admin/semuaSurat">
                                     <i class="nav-icon far fa-calendar-alt"></i>
                                     Jadwal Servis
                                 </a>
@@ -243,7 +244,7 @@
                                     <?php
                                     $i = 1;
                                     foreach ($letter as $letters) : ?>
-                                        <tr class="table-warning">
+                                        <tr class="table-light">
                                             <th scope="row"><?= $i++; ?></th>
                                             <td><?= $letters->created_at; ?></td>
                                             <td><?= $letters->no_polisi; ?></td>
@@ -257,7 +258,7 @@
                                             <td>
                                                 <div class="wrapper-button">
                                                     <!-- DELETE -->
-                                                    <!-- <a class="btn btn-danger btn-sm" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a> -->
+                                                    <a class="btn btn-danger btn-sm" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                     <!-- EDIT -->
                                                     <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                         <i class="fas fa-edit"></i>

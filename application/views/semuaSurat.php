@@ -141,27 +141,52 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Tgl Surat</th>
-                                        <th scope="col">No Surat</th>
-                                        <th scope="col">Alamat</th>
-                                        <th scope="col">Kelurahan</th>
-                                        <th scope="col">Foto</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Author</th>
+                                        <th scope="col">Tanggal Pengajuan</th>
+                                        <th scope="col">Nomor Polisi</th>
+                                        <th scope="col">Jenis Kendaraan</th>
+                                        <th scope="col">Tipe</th>
+                                        <th scope="col">Nomor Rangka</th>
+                                        <th scope="col">Operator</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Status Pengajuan</th>
+                                        <th scope="col">Tanggal Servis</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <?php
                                 $i = 1;
                                 foreach ($letter as $letters) : ?>
-                                    <tr class="table-warning">
+                                    <tr class="table-light">
                                         <th scope="row"><?= $i++; ?></th>
-                                        <td><?= $letters->tgl_surat; ?></td>
-                                        <td><?= $letters->no_surat; ?></td>
-                                        <td><?= $letters->alamat; ?></td>
-                                        <td><?= $letters->kelurahan; ?></td>
-                                        <td><?= $letters->image; ?></td>
-                                        <td><?= $letters->status; ?></td>
-                                        <td><?= $letters->username; ?></td>
+                                        <td><?= $letters->created_at; ?></td>
+                                        <td><?= $letters->no_polisi; ?></td>
+                                        <td><?= $letters->jenis_kendaraan; ?></td>
+                                        <td><?= $letters->tipe; ?></td>
+                                        <td><?= $letters->no_rangka; ?></td>
+                                        <td><?= $letters->operator; ?></td>
+                                        <td><?= $letters->keterangan; ?></td>
+                                        <td>
+                                            <?php
+                                            if ($letters->status_pengajuan == "Diterima") {
+                                                echo '<span class="badge badge-success">Diterima</span>';
+                                            } elseif ($letters->status_pengajuan == "Ditolak") {
+                                                echo '<span class="badge badge-danger">Ditolak</span>';
+                                            } else {
+                                                echo '<span class="badge badge-info">Dalam Proses Pengajuan</span>';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><?= $letters->tgl_servis; ?></td>
+                                        <td>
+                                            <div class="wrapper-button">
+
+                                                <!-- DELETE -->
+                                                <a class="btn btn-danger btn-sm" href="deletePengajuan/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                <!-- EDIT -->
+                                                <span><a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>"><i class="fas fa-edit"></i></a>
+
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -225,6 +250,7 @@
                     "autoWidth": false,
                     "responsive": true,
                 });
+
             });
         </script>
 
