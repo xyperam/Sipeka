@@ -52,5 +52,13 @@ class PostModel extends CI_Model
         return $this->db->update('post', $data);
     }
     //tes search
+    public function getJadwal()
+    {   // Menampilkan seluruh data di table user dan post dengan syarat user yang sedang login memiliki kecocokan unik id di tampilkan berdasarkan created_at 
+        return $this->db->query("SELECT * FROM post WHERE status_pengajuan = 'Diterima' ORDER BY created_at DESC")->result();
+    }
 
+    public function getJadwalServisMember()
+    {   // Menampilkan seluruh data di table user dan post dengan syarat user yang sedang login memiliki kecocokan unik id di tampilkan berdasarkan created_at 
+        return $this->db->query("SELECT * FROM post p INNER JOIN user u ON p.user_id=u.id Where p.status_pengajuan = 'Diterima' ORDER BY created_at DESC")->result();
+    }
 }

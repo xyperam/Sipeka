@@ -51,7 +51,7 @@
                         <?php if ($user->avatar != null) : ?>
                             <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="450" height="450">
                         <?php else : ?>
-                            <img src="<?= base_url(); ?>assets/img/default.jpg" width="250" height="250" class="img-circle elevation-2">
+                            <img src="<?= base_url(); ?>assets/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
                     </div>
                     <div class="info">

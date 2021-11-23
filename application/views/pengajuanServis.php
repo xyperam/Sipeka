@@ -48,9 +48,9 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <?php if ($user->avatar != null) : ?>
-                            <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
+                            <img src="<?= base_url(); ?>avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
                         <?php else : ?>
-                            <img src="<?= base_url(); ?>assets/img/default.jpg" width="250" height="250" class="img-circle elevation-2">
+                            <img src="<?= base_url(); ?>assets/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
                     </div>
                     <div class="info">
@@ -84,8 +84,17 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/jadwalServis">
+                                <a href="<?= base_url(); ?>member/statusPengajuan">
                                     <i class="nav-icon fas fa-eye"></i>
+                                    Status Pengajuan
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/jadwalservismember">
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
                                     Jadwal Servis
                                 </a>
                             </h6>
@@ -93,30 +102,28 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/semuaSurat">
-                                    <i class="nav-icon fas fa-mail-bulk"></i>
-                                    Semua Surat Aduan
+                                <a href="<?= base_url(); ?>member/profile">
+                                    <i class="nav-icon fas fas fa-user"></i>
+                                    Profil
                                 </a>
                             </h6>
                         </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/about">
+                                <a href="<?= base_url(); ?>#">
                                     <i class="nav-icon fas fa-info-circle"></i>
                                     About
                                 </a>
                             </h6>
                         </li>
 
-                        <li>
-                            <hr />
-                        </li>
+
 
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>auth/logout">
-                                    <i class="nav-icon fas fa-door-open"></i>
+                                    <i class="nav-icon fas fa-sign-out-alt"></i>
                                     Logout
                                 </a>
                             </h6>
@@ -150,32 +157,32 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="no_polisi">Nomor Polisi</label>
-                                    <input type="text" name="no_polisi" id="no_polisi" class=" form-control" placeholder="Nomor Polisi">
+                                    <input type="text" name="no_polisi" id="no_polisi" class=" form-control" placeholder="Nomor Polisi" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="jenis_kendaraan">Jenis Kendaraan</label>
-                                    <input type="text" name="jenis_kendaraan" id="jenis_kendaraan" class="form-control" placeholder="Jenis Kendaraan">
+                                    <input type="text" name="jenis_kendaraan" id="jenis_kendaraan" class="form-control" placeholder="Jenis Kendaraan" readonly required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="tipe">Tipe</label>
-                                    <input type="text" name="tipe" id="tipe" class="form-control" placeholder="Tipe">
+                                    <input type="text" name="tipe" id="tipe" class="form-control" placeholder="Tipe" readonly required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="no_rangka">Nomor Rangka</label>
-                                    <input type="text" name="no_rangka" id="no_rangka" class="form-control" placeholder="Nomor Rangka">
+                                    <input type="text" name="no_rangka" id="no_rangka" class="form-control" placeholder="Nomor Rangka" readonly required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="operator">Operator</label>
-                                    <input type="text" name="operator" id="operator" class="form-control" placeholder="operator">
+                                    <input type="text" name="operator" id="operator" class="form-control" placeholder="operator" readonly required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <textarea class="form-control rounded-0" name="keterangan" rows="3" placeholder="Masukan Keterangan Kondisi Kendaraan"></textarea>
+                                    <textarea class="form-control rounded-0" name="keterangan" rows="3" placeholder="Masukan Keterangan Kondisi Kendaraan" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="status_pengajuan" value="Proses Pengajuan">

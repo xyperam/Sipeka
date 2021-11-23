@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistem Aduan Penaggulangan Bencana</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -28,10 +31,6 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>auth/logout" class="nav-link">Logout</a>
-                </li>
-            </ul>
         </nav>
         <!-- /.navbar -->
 
@@ -49,7 +48,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <?php if ($user->avatar != null) : ?>
-                            <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="450" height="450">
+                            <img src="<?= base_url(); ?>avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
                         <?php else : ?>
                             <img src="<?= base_url(); ?>assets/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
@@ -58,10 +57,6 @@
                         <a href="#" class="d-block"><?= $user->username; ?></a>
                         <a href="#" class="d-block"><?= $user->email; ?></a>
                     </div>
-
-                    <a class="btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg">
-                        <i class="fas fa-edit"></i>
-                    </a>
                 </div>
 
 
@@ -89,8 +84,17 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/jadwalServis">
+                                <a href="<?= base_url(); ?>member/statusPengajuan">
                                     <i class="nav-icon fas fa-eye"></i>
+                                    Status Pengajuan
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/jadwalservismember">
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
                                     Jadwal Servis
                                 </a>
                             </h6>
@@ -98,17 +102,16 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/suratMasuk">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    Pengajuan Servis
+                                <a href="<?= base_url(); ?>member/profile">
+                                    <i class="nav-icon fas fas fa-user"></i>
+                                    Profil
                                 </a>
                             </h6>
                         </li>
 
-
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/about">
+                                <a href="<?= base_url(); ?>#">
                                     <i class="nav-icon fas fa-info-circle"></i>
                                     About
                                 </a>
@@ -119,15 +122,16 @@
                             <hr />
                         </li>
 
+
+
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>auth/logout">
-                                    <i class="nav-icon fas fa-door-open"></i>
+                                    <i class="nav-icon fas fa-sign-out-alt"></i>
                                     Logout
                                 </a>
                             </h6>
                         </li>
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -137,7 +141,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
-
+            <!-- modal -->
             <div class="tab-content pt-5">
                 <div class="tab-empty">
                     <div class="modal fade" id="modal-lg">
@@ -150,7 +154,7 @@
                                     </button>
                                 </div>
 
-                                <form class="form" role="form" method="post" enctype="multipart/form-data" action="updateProfile">
+                                <form class="form" role="form" method="post" enctype="multipart/form-data" action="update_profile">
 
                                     <input value="<?= $user->id; ?>" type="hidden" name="id">
                                     <input value="<?= $user->avatar; ?>" type="hidden" name="old_avatar">
@@ -161,16 +165,24 @@
                                             <div class="form-group mb-3">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                                                        <span class="input-group-text">Username<i class="ni ni-single-02"></i></span>
                                                     </div>
                                                     <input class="form-control" value="<?= $user->username; ?>" type="text" name="username" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Nama<i class="ni ni-single-02"></i></span>
+                                                    </div>
+                                                    <input class="form-control" value="<?= $user->name; ?>" type="text" name="name" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                                        <span class="input-group-text">Email<i class="ni ni-email-83"></i></span>
                                                     </div>
                                                     <input class="form-control" value="<?= $user->email; ?>" type="email" name="email" required>
                                                 </div>
@@ -195,57 +207,47 @@
                 </div>
             </div>
 
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
-                            <div class="info-box-content">
-                                <a href="<?= base_url(); ?>member/massage">
-                                    <h5 class="info-box-text">Messages</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-success"><i class="fas fa-eye"></i></span>
-
-                            <div class="info-box-content">
-                                <a href="<?= base_url(); ?>member/lihatSurat">
-                                    <h5 class="info-box-text">Surat Saya</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-warning"><i class="fas fa-mail-bulk"></i></span>
-
-                            <div class="info-box-content">
-                                <a href="<?= base_url(); ?>member/semuaSurat">
-                                    <h5 class="info-box-text">Semua Surat</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
+            <!-- end modal -->
+            <div class="tab-content pt-5">
+                <div class="tab-empty">
+                    <h2 class="display-5">Profil Saya</h2>
                 </div>
             </div>
+            <<div class="col d-flex justify-content-center">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <?php if ($user->avatar != null) : ?>
+                                <img src="<?= base_url(); ?>avatar/<?= $user->avatar; ?>" class="card-img">
+                            <?php else : ?>
+                                <img src="<?= base_url(); ?>assets/default.jpg" class="card-img">
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 href="#" class="d-block"><?= $user->username; ?></h5>
+                                <p class="card-text"><?= $user->name; ?></p>
+                                <p class="card-text"><small class="text-muted"><?= $user->email; ?></small></p>
+                                <button type="button" class="btn btn-primary btn-sm" style="float: right" id="editModal" data-toggle="modal" data-target="#modal-lg">Edit Profil</button>
 
-
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
-        <!-- /.content-wrapper -->
 
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+
+
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <!-- Control Sidebar -->
+    <aside class=" control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -263,6 +265,13 @@
     <script src="<?= base_url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
 </body>
 
 </html>

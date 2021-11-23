@@ -58,12 +58,15 @@ $route['logout'] = 'auth/logout';
 // PAGES
 // ADMIN
 $route['admin'] = 'admin/index';
-$route['semuaSurat'] = 'admin/semuaSurat';
+$route['jadwalServis'] = 'admin/JadwalServis';
 
 // USER
 $route['home'] = 'member/index';
 $route['pengajuanServis'] = 'member/pengajuanServis';
 $route['pengajuanServis'] = 'Member/pengajuanServis';
+$route['jadwalservismember'] = 'member/jadwalservismember';
+$route['profile'] = 'member/profile';
+
 // PAGES END
 
 // CONTROLLER
@@ -75,7 +78,7 @@ $route['editUser'] = 'admin/editUser';
 $route['delete_post/(:num)'] = 'admin/delete_post/$1'; // DELETE POST UNTUK ADMIN
 $route['deletePost/(:num)'] = 'member/deletePost/$1';   // DELETE POST UNTUK MEMBER
 
-$route['updateProfile'] = 'member/update_profile';  // UPDATE PROFILE UNTUK MEMBER
+$route['update_profile'] = 'member/update_profile'; // UPDATE PROFILE UNTUK MEMBER
 // CONTROLLER END
 
 

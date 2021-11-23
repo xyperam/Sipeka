@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem Aduan Penaggulangan Bencana</title>
+    <title>Sistem Pemeliharaan Kendaraan</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -44,7 +44,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <?php if ($user->avatar != null) : ?>
-                            <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
+                            <img src="<?= base_url(); ?>avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
                         <?php else : ?>
                             <img src="<?= base_url(); ?>assets/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
@@ -62,37 +62,45 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/index">
-                                    <i class="nav-icon fas fa-users"></i>
-                                    User Account
-                                </a>
-                            </h6>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/datakendaraan">
-                                    <i class="nav-icon fas fa-clipboard-list"></i>
-                                    Data Kendaraan
+                                <a href="<?= base_url(); ?>member/index">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    HOME
                                 </a>
                             </h6>
                         </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/konfirmasi">
-                                    <i class="nav-icon far fa-calendar-check"></i>
-                                    Konfirmasi Servis
+                                <a href="<?= base_url(); ?>member/pengajuanServis">
+                                    <i class="nav-icon far fa-envelope"></i>
+                                    Pengajuan Servis
                                 </a>
                             </h6>
                         </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/jadwalServis">
-                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                <a href="<?= base_url(); ?>member/statusPengajuan">
+                                    <i class="nav-icon fas fa-eye"></i>
+                                    Status Pengajuan
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/jadwalservismember">
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
                                     Jadwal Servis
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/profile">
+                                    <i class="nav-icon fas fas fa-user"></i>
+                                    Profil
                                 </a>
                             </h6>
                         </li>
@@ -129,9 +137,71 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
 
+
+            <!-- /.modal -->
+            <?php foreach ($service as $services) : ?>
+                <div class="modal fade" id="modal-lg<?= $services->id; ?>">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Pengajuan Servis </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form class="form" role="form" method="post" enctype="multipart/form-data" action="<?= base_url('Member/editPengajuan') ?>">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <input value="<?= $services->id; ?>" type="hidden" name="id">
+                                            <input class="form-control" id="no_polisi" name="no_polisi" value="<?= $services->no_polisi; ?>" type="text">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Jenis Kendaraan</label>
+                                            <input class="form-control" id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $services->jenis_kendaraan; ?>" type="text">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Tipe</label>
+                                            <input class="form-control" id="tipe" name="tipe" value="<?= $services->tipe; ?>" type="text">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Nomor Rangka</label>
+                                            <input class="form-control" id="no_rangka" name="no_rangka" value="<?= $services->no_rangka; ?>" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Operator</label>
+                                            <input class="form-control" id="operator" name="operator" value="<?= $services->operator; ?>" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Keterangan</label>
+                                            <input class="form-control" id="keterangan" name="keterangan" value="<?= $services->keterangan; ?>" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="status_pengajuan" value="Proses Pengajuan">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <!-- /.modal -->
+
+
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">Surat Aduan</h2>
+                    <h2 class="display-4">Pengajuan Servis Kendaraan</h2>
                 </div>
 
                 <div class="container my-5">
@@ -149,8 +219,9 @@
                                         <th scope="col">Nomor Rangka</th>
                                         <th scope="col">Operator</th>
                                         <th scope="col">Keterangan</th>
+                                        <th scope="col">Status Pengajuan</th>
                                         <th scope="col">Tanggal Servis</th>
-
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -165,7 +236,28 @@
                                         <td><?= $services->no_rangka; ?></td>
                                         <td><?= $services->operator; ?></td>
                                         <td><?= $services->keterangan; ?></td>
+                                        <td>
+                                            <?php
+                                            if ($services->status_pengajuan == "Diterima") {
+                                                echo '<span class="badge badge-success">Diterima</span>';
+                                            } elseif ($services->status_pengajuan == "Ditolak") {
+                                                echo '<span class="badge badge-danger">Ditolak</span>';
+                                            } else {
+                                                echo '<span class="badge badge-info">Dalam Proses Pengajuan</span>';
+                                            }
+                                            ?>
+                                        </td>
                                         <td><?= $services->tgl_servis; ?></td>
+                                        <td>
+                                            <div class="wrapper-button">
+
+                                                <!-- DELETE -->
+                                                <a class="btn btn-danger btn-sm" href="deletePengajuan/<?= $services->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                <!-- EDIT -->
+                                                <span><a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $services->id; ?>"><i class="fas fa-edit"></i></a>
+
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -217,8 +309,10 @@
                 $("#example1").DataTable({
                     "responsive": true,
                     "lengthChange": false,
-                    "autoWidth": false,
+                    "autoWidth": true,
                     "buttons": ["csv", "excel", "pdf", "print"]
+
+
                 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                 $('#example2').DataTable({
                     "paging": true,
@@ -229,6 +323,7 @@
                     "autoWidth": false,
                     "responsive": true,
                 });
+
 
             });
         </script>

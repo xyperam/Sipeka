@@ -49,7 +49,7 @@
                         <?php if ($user->avatar != null) : ?>
                             <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
                         <?php else : ?>
-                            <img src="<?= base_url(); ?>assets/img/default.jpg" width="250" height="250" class="img-circle elevation-2">
+                            <img src="<?= base_url(); ?>assets/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
                     </div>
                     <div class="info">
@@ -84,7 +84,7 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/suratMasuk">
+                                <a href="<?= base_url(); ?>Admin/konfirmasi">
                                     <i class="nav-icon far fa-calendar-check"></i>
                                     Konfirmasi Servis
                                 </a>
@@ -93,7 +93,7 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/suratMasuk">
+                                <a href="<?= base_url(); ?>Admin/jadwalServis">
                                     <i class="nav-icon far fa-calendar-alt"></i>
                                     Jadwal Servis
                                 </a>
@@ -116,7 +116,7 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>auth/logout">
-                                    <i class="nav-icon fas fa-door-open"></i>
+                                    <i class="nav-icon fas fa-sign-out-alt"></i>
                                     Logout
                                 </a>
                             </h6>

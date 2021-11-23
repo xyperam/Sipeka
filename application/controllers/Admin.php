@@ -30,13 +30,13 @@ class Admin extends CI_Controller
         $this->load->view('admin', $data);
     }
 
-    public function suratMasuk()
+    public function konfirmasi()
     {
         $data = [
             "user" => $this->user,
-            "letter" => $this->PostModel->getAll()
+            "service" => $this->PostModel->getAll()
         ];
-        $this->load->view('suratMasuk', $data);
+        $this->load->view('konfirmasiPengajuan', $data);
     }
     public function datakendaraan()
     {
@@ -57,14 +57,14 @@ class Admin extends CI_Controller
 
 
     // PAGES END
-    public function semuaSurat()
+    public function jadwalServis()
     {
         $data = [
             "user" => $this->user,
-            "letter" => $this->PostModel->getAll()
+            "service" => $this->PostModel->getJadwal()
         ];
 
-        $this->load->view('semuaSurat', $data);
+        $this->load->view('JadwalServis', $data);
     }
 
 
@@ -114,7 +114,7 @@ class Admin extends CI_Controller
     // CRUD PAGES USER ACCOUNT END
 
 
-    // CRUD PAGES SURAT MASUK BPBD
+    // CRUD 
 
     public function delete_post($id)
     {
@@ -138,9 +138,9 @@ class Admin extends CI_Controller
         $update = $this->PostModel->updatePengajuan($id, $data);
 
         if ($update) {
-            redirect(base_url("Admin/suratMasuk"));
+            redirect(base_url("Admin/konfirmasi"));
         } else {
-            redirect(base_url("Admin/suratMasuk"));
+            redirect(base_url("Admin/konfirmasi"));
         }
     } //end function
 

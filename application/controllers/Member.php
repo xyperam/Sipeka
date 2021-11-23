@@ -24,7 +24,7 @@ class Member extends CI_Controller
     {
         $data = [
             "user" => $this->user,
-            "letter" => $this->PostModel->getAll()
+            "service" => $this->PostModel->getAll()
         ];
         $this->load->view('home', $data);
     }
@@ -38,71 +38,33 @@ class Member extends CI_Controller
         $this->load->view('pengajuanServis', $data);
     }
 
-    public function jadwalServis()
+    public function statusPengajuan()
     {
         $data = [
             "user" => $this->user,
-            "letter" => $this->PostModel->getAllByUser($this->user->id)
+            "service" => $this->PostModel->getAllByUser($this->user->id)
         ];
 
-        $this->load->view('jadwalServis', $data);
+        $this->load->view('statusPengajuan', $data);
     }
 
-    public function semuaSurat()
+    public function jadwalservismember()
     {
         $data = [
             "user" => $this->user,
-            "letter" => $this->PostModel->getAll()
+            "servicemember" => $this->PostModel->getJadwalServisMember()
         ];
 
-        $this->load->view('semuaSurat', $data);
+        $this->load->view('jadwalservismember', $data);
     }
 
-
-    public function updateProfile()
+    public function profile()
     {
-        // Buat kerangka sesuai field di table database
-        $id = $this->input->post("id");
-        $username = $this->input->post("username");
-        $email = $this->input->post("email");
-        $avatar = $this->input->post("old_avatar");
-        if (!empty($_FILES["new_avatar"]["name"])) {
-            $avatar = $this->_upload_avatar();
-        }
-
-        // tentukan data mana saja yang ingin atau bisa di ubah (Susai Form di HTML)
         $data = [
-            "username" => $username,
-            "email" => $email,
-            "avatar" => $avatar
+            "user" => $this->user,
+            "error" => " "
         ];
-
-        if ($this->UserModel->update($data, $id) == 1) {
-            redirect(base_url("home"));
-        } else {
-            redirect(base_url("home"));
-        }
-    }
-
-    //mengupload foto profil
-    private function _upload_avatar()
-    {
-        $config['upload_path']          = './avatar/';
-        $config['allowed_types']        = 'jpeg|jpg|png';
-        $config['file_name']            = uniqid();
-        $config['overwrite']            = true;
-        $config['max_size']             = 1000;
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('new_avatar')) {
-            redirect(base_url("home"));
-        } else {
-            if ($this->user->avatar != null && file_exists("./avatar/" . $this->user->avatar)) {
-                unlink("./avatar/" . $this->user->avatar);
-            }
-            return $this->upload->data("file_name");
-        }
+        $this->load->view('profile', $data);
     }
 
 
@@ -177,28 +139,6 @@ class Member extends CI_Controller
             redirect(base_url("Member/jadwalServis"));
         }
     }
-    //autocomplete
-    // function get_autocomplete()
-    // {
-    //     if (isset($_GET['term'])) {
-    //         $result = $this->DataKendaraanModel->search_nopol($_GET['term']);
-    //         if (count($result) > 0) {
-    //             foreach ($result as $row)
-    //             $arr_result[] = $array(
-    //                 'label'=>$row->no_polisi,
-    //             )
-    //                 // $arr_result[] = $array(
-    //                 //     'label'=>$row->no_polisi,
-    //                 //     'jenis_kendaraan' =>$row->jenis_kendaraan,
-    //                 //     'tipe' =>$row->tipe,
-    //                 //     'no_rangka' =>$row->no_rangka,
-    //                 //     'operator' =>$row->operator
-
-    //                 // )
-    //             echo json_encode($arr_result);
-    //         }
-    //     }
-    // }
     function get_autocomplete()
     {
         if (isset($_GET['term'])) {
@@ -214,6 +154,58 @@ class Member extends CI_Controller
                     );
                 echo json_encode($arr_result);
             }
+        }
+    }
+
+    //profil
+    private function _upload_avatar()
+    {
+        $config['upload_path']          = './avatar/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['file_name']            = uniqid();
+        $config['overwrite']            = true;
+        $config['max_size']             = 1000;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('new_avatar')) {
+            echo "
+            <script>
+                alert('Terjadi kesalahan upload');
+                document.location.href = \"$this->profile\";
+            </script>";
+            die();
+        } else {
+            if ($this->user->avatar != null && file_exists("./avatar/" . $this->user->avatar)) {
+                unlink("./avatar/" . $this->user->avatar);
+            }
+            return $this->upload->data("file_name");
+        }
+    }
+    public function update_profile()
+    {
+        $id = $this->input->post("id");
+        $username = $this->input->post("username");
+        $name = $this->input->post("name");
+        $email = $this->input->post("email");
+        $avatar = $this->input->post("old_avatar");
+
+        if (!empty($_FILES["new_avatar"]["name"])) {
+            $avatar = $this->_upload_avatar();
+        }
+
+        $data = [
+            "username" => $username,
+            "name" => $name,
+            "email" => $email,
+            "avatar" => $avatar
+        ];
+
+
+        if ($this->UserModel->update($data, $id) == 1) {
+            redirect(base_url("profile"));
+        } else {
+            redirect(base_url("profile"));
         }
     }
 }

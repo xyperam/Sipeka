@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Surat Masuk</title>
+    <title>Konfirmasi Pengajuan</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -50,7 +50,7 @@
                         <?php if ($user->avatar != null) : ?>
                             <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
                         <?php else : ?>
-                            <img src="<?= base_url(); ?>assets/img/default.jpg" width="250" height="250" class="img-circle elevation-2">
+                            <img src="<?= base_url(); ?>assets/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
                     </div>
                     <div class="info">
@@ -71,10 +71,6 @@
                                     User Account
                                 </a>
                             </h6>
-                        </li>s
-
-
-
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>Admin/datakendaraan">
@@ -86,7 +82,7 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/suratMasuk">
+                                <a href="<?= base_url(); ?>Admin/konfirmasi">
                                     <i class="nav-icon far fa-calendar-check"></i>
                                     Konfirmasi Servis
                                 </a>
@@ -94,7 +90,7 @@
                         </li>
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/semuaSurat">
+                                <a href="<?= base_url(); ?>Admin/jadwalServis">
                                     <i class="nav-icon far fa-calendar-alt"></i>
                                     Jadwal Servis
                                 </a>
@@ -117,7 +113,7 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>auth/logout">
-                                    <i class="nav-icon fas fa-door-open"></i>
+                                    <i class="nav-icon fas fa-sign-out-alt"></i>
                                     Logout
                                 </a>
                             </h6>
@@ -135,15 +131,15 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">Surat Masuk</h2>
+                    <h2 class="display-4">Konfirmasi Pengajuan</h2>
                 </div>
 
                 <div class="container my-5">
                     <div class="card">
 
                         <!-- /.modal -->
-                        <?php foreach ($letter as $letters) : ?>
-                            <div class="modal fade" id="modal-lg<?= $letters->id; ?>">
+                        <?php foreach ($service as $services) : ?>
+                            <div class="modal fade" id="modal-lg<?= $services->id; ?>">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -159,30 +155,30 @@
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="">Tanggal Pengajuan</label>
-                                                        <input value="<?= $letters->id; ?>" type="hidden" name="id">
-                                                        <input class="form-control" id="created_at" name="created_at" value="<?= $letters->created_at; ?>" type="text" readonly>
+                                                        <input value="<?= $services->id; ?>" type="hidden" name="id">
+                                                        <input class="form-control" id="created_at" name="created_at" value="<?= $services->created_at; ?>" type="text" readonly>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="">Nomor Polisi</label>
-                                                        <input class="form-control" id="no_polisi" name="no_polisi" value="<?= $letters->no_polisi; ?>" type="text" readonly>
+                                                        <input class="form-control" id="no_polisi" name="no_polisi" value="<?= $services->no_polisi; ?>" type="text" readonly>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="">Jenis Kendaraan</label>
-                                                        <input class="form-control" id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $letters->jenis_kendaraan; ?>" type="text" readonly>
+                                                        <input class="form-control" id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $services->jenis_kendaraan; ?>" type="text" readonly>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Tipe</label>
-                                                        <input class="form-control" id="tipe" name="tipe" value="<?= $letters->tipe; ?>" type="text" readonly>
+                                                        <input class="form-control" id="tipe" name="tipe" value="<?= $services->tipe; ?>" type="text" readonly>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Nomor Rangka</label>
-                                                        <input class="form-control" id="no_rangka" name="no_rangka" value="<?= $letters->no_rangka; ?>" type="text" readonly>
+                                                        <input class="form-control" id="no_rangka" name="no_rangka" value="<?= $services->no_rangka; ?>" type="text" readonly>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Operator</label>
-                                                        <input class="form-control" id="operator" name="operator" value="<?= $letters->operator; ?>" type="text" readonly>
+                                                        <input class="form-control" id="operator" name="operator" value="<?= $services->operator; ?>" type="text" readonly>
                                                     </div>
 
                                                     <div>
@@ -197,7 +193,7 @@
 
                                                     <div class="form-group">
                                                         <label for="">Tanggal Servis</label>
-                                                        <input class="form-control" id="tgl_servis" name="tgl_servis" value="<?= $letters->tgl_servis; ?>" type="date">
+                                                        <input class="form-control" id="tgl_servis" name="tgl_servis" value="<?= $services->tgl_servis; ?>" type="date">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
@@ -243,24 +239,34 @@
                                 <tbody>
                                     <?php
                                     $i = 1;
-                                    foreach ($letter as $letters) : ?>
+                                    foreach ($service as $services) : ?>
                                         <tr class="table-light">
                                             <th scope="row"><?= $i++; ?></th>
-                                            <td><?= $letters->created_at; ?></td>
-                                            <td><?= $letters->no_polisi; ?></td>
-                                            <td><?= $letters->jenis_kendaraan; ?></td>
-                                            <td><?= $letters->tipe; ?></td>
-                                            <td><?= $letters->no_rangka; ?></td>
-                                            <td><?= $letters->operator; ?></td>
-                                            <td><?= $letters->keterangan; ?></td>
-                                            <td><?= $letters->status_pengajuan; ?></td>
-                                            <td><?= $letters->tgl_servis; ?></td>
+                                            <td><?= $services->created_at; ?></td>
+                                            <td><?= $services->no_polisi; ?></td>
+                                            <td><?= $services->jenis_kendaraan; ?></td>
+                                            <td><?= $services->tipe; ?></td>
+                                            <td><?= $services->no_rangka; ?></td>
+                                            <td><?= $services->operator; ?></td>
+                                            <td><?= $services->keterangan; ?></td>
+                                            <td>
+                                                <?php
+                                                if ($services->status_pengajuan == "Diterima") {
+                                                    echo '<span class="badge badge-success">Diterima</span>';
+                                                } elseif ($services->status_pengajuan == "Ditolak") {
+                                                    echo '<span class="badge badge-danger">Ditolak</span>';
+                                                } else {
+                                                    echo '<span class="badge badge-info">Dalam Proses Pengajuan</span>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td><?= $services->tgl_servis; ?></td>
                                             <td>
                                                 <div class="wrapper-button">
                                                     <!-- DELETE -->
-                                                    <a class="btn btn-danger btn-sm" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                    <a class="btn btn-danger btn-sm" href="delete_post/<?= $services->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                     <!-- EDIT -->
-                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
+                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $services->id; ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </div>

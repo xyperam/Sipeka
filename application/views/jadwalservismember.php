@@ -44,9 +44,9 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <?php if ($user->avatar != null) : ?>
-                            <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
+                            <img src="<?= base_url(); ?>avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
                         <?php else : ?>
-                            <img src="<?= base_url(); ?>assets/img/default.jpg" width="250" height="250" class="img-circle elevation-2">
+                            <img src="<?= base_url(); ?>assets/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
                     </div>
                     <div class="info">
@@ -80,18 +80,26 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/lihatSurat">
+                                <a href="<?= base_url(); ?>member/statusPengajuan">
                                     <i class="nav-icon fas fa-eye"></i>
-                                    Jadwal Servis
+                                    Status Pengajuan
                                 </a>
                             </h6>
                         </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>member/semuaSurat">
-                                    <i class="nav-icon fas fa-mail-bulk"></i>
-                                    Semua Surat Aduan
+                                <a href="<?= base_url(); ?>member/jadwalservismember">
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
+                                    Jadwal Servis
+                                </a>
+                            </h6>
+                        </li>
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/profile">
+                                    <i class="nav-icon fas fas fa-user"></i>
+                                    Profil
                                 </a>
                             </h6>
                         </li>
@@ -112,12 +120,11 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>auth/logout">
-                                    <i class="nav-icon fas fa-door-open"></i>
+                                    <i class="nav-icon fas fa-sign-out-alt"></i>
                                     Logout
                                 </a>
                             </h6>
                         </li>
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -130,7 +137,7 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">Surat Aduan</h2>
+                    <h2 class="display-4">Jadwal Servis</h2>
                 </div>
 
                 <div class="container my-5">
@@ -148,45 +155,23 @@
                                         <th scope="col">Nomor Rangka</th>
                                         <th scope="col">Operator</th>
                                         <th scope="col">Keterangan</th>
-                                        <th scope="col">Status Pengajuan</th>
                                         <th scope="col">Tanggal Servis</th>
-                                        <th scope="col">Action</th>
+
                                     </tr>
                                 </thead>
                                 <?php
                                 $i = 1;
-                                foreach ($letter as $letters) : ?>
+                                foreach ($servicemember as $services) : ?>
                                     <tr class="table-light">
                                         <th scope="row"><?= $i++; ?></th>
-                                        <td><?= $letters->created_at; ?></td>
-                                        <td><?= $letters->no_polisi; ?></td>
-                                        <td><?= $letters->jenis_kendaraan; ?></td>
-                                        <td><?= $letters->tipe; ?></td>
-                                        <td><?= $letters->no_rangka; ?></td>
-                                        <td><?= $letters->operator; ?></td>
-                                        <td><?= $letters->keterangan; ?></td>
-                                        <td>
-                                            <?php
-                                            if ($letters->status_pengajuan == "Diterima") {
-                                                echo '<span class="badge badge-success">Diterima</span>';
-                                            } elseif ($letters->status_pengajuan == "Ditolak") {
-                                                echo '<span class="badge badge-danger">Ditolak</span>';
-                                            } else {
-                                                echo '<span class="badge badge-info">Dalam Proses Pengajuan</span>';
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= $letters->tgl_servis; ?></td>
-                                        <td>
-                                            <div class="wrapper-button">
-
-                                                <!-- DELETE -->
-                                                <a class="btn btn-danger btn-sm" href="deletePengajuan/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
-                                                <!-- EDIT -->
-                                                <span><a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>"><i class="fas fa-edit"></i></a>
-
-                                            </div>
-                                        </td>
+                                        <td><?= $services->created_at; ?></td>
+                                        <td><?= $services->no_polisi; ?></td>
+                                        <td><?= $services->jenis_kendaraan; ?></td>
+                                        <td><?= $services->tipe; ?></td>
+                                        <td><?= $services->no_rangka; ?></td>
+                                        <td><?= $services->operator; ?></td>
+                                        <td><?= $services->keterangan; ?></td>
+                                        <td><?= $services->tgl_servis; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
